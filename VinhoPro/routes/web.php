@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\{UserController, ProfileController};
+use App\Http\Controllers\{UserController, ProfileController, CategoryController, ProductController, HomeController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,13 @@ use App\Http\Controllers\{UserController, ProfileController};
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home.welcome');
+Route::get('/listproduc', [App\Http\Controllers\HomeController::class, 'product'])->name('home.products');
+Route::get('/listcategory', [App\Http\Controllers\HomeController::class, 'category'])->name('home.categories');
+Route::get('/product/{id}', [HomeController::class, 'showProduct'])->name('home.productshow');
+Route::get('/category/{category_id}/products', [HomeController::class, 'categoryProduct'])->name('category.products');
+
+
 
 Auth::routes(['verify' => true]);
 

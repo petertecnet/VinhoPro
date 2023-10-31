@@ -3,6 +3,83 @@
 @section('content')
 
 @include('layouts.alerts')
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Categorias</h3>
+            <ul>
+                @foreach($categories as $category)
+                    <li><a href="{{ route('category.products', ['category_id' => $category->id]) }}">{{ $category->name }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            <h2>Todos os Produtos</h2>
+            <nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {{$products->currentPage() == 1 ? 'disabled' : ''}}">
+      <a class="page-link" href="{{$products->previousPageUrl()}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    @for($i = 1; $i <= $products->lastPage(); $i++)
+        <li class="page-item {{$i == $products->currentPage() ? 'active' : ''}}">
+            <a class="page-link" href="{{$products->url($i)}}">{{$i}}</a>
+        </li>
+    @endfor
+
+    <li class="page-item {{$products->currentPage() == $products->lastPage() ? 'disabled' : ''}}">
+      <a class="page-link" href="{{$products->nextPageUrl()}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+            <div class="row">
+                @foreach($products as $product)
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <p class="card-text">{{ $product->category->name }}</p>
+                                <p class="card-text">Preço: R$ {{ $product->price }}</p>
+                                <a href="{{ route('home.productshow', ['id' => $product->id]) }}" class="btn btn-primary">Detalhar</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {{$products->currentPage() == 1 ? 'disabled' : ''}}">
+      <a class="page-link" href="{{$products->previousPageUrl()}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    @for($i = 1; $i <= $products->lastPage(); $i++)
+        <li class="page-item {{$i == $products->currentPage() ? 'active' : ''}}">
+            <a class="page-link" href="{{$products->url($i)}}">{{$i}}</a>
+        </li>
+    @endfor
+
+    <li class="page-item {{$products->currentPage() == $products->lastPage() ? 'disabled' : ''}}">
+      <a class="page-link" href="{{$products->nextPageUrl()}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10 text-center">
@@ -46,3 +123,30 @@
     </div>
 </div>
 @endsection
+<style>
+    /* Adicione este código ao seu arquivo de estilos CSS personalizado */
+
+.custom-pagination .page-link {
+    color: #007bff; /* Cor das setas */
+    font-size: 1.25rem; /* Tamanho da fonte das setas */
+}
+
+.custom-pagination .page-link:hover {
+    color: #0056b3; /* Cor ao passar o mouse sobre as setas */
+}
+
+.custom-pagination .page-item.disabled .page-link {
+    pointer-events: none; /* Desabilitar cliques nas setas desativadas */
+    color: #ccc; /* Cor das setas desativadas */
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #007bff; /* Cor de fundo da página ativa */
+    border-color: #007bff; /* Cor da borda da página ativa */
+}
+
+.custom-pagination .page-link:focus {
+    box-shadow: none; /* Remover sombra ao focar na seta */
+}
+
+</style>
