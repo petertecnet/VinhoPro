@@ -1,23 +1,66 @@
-VinhoPro
-O VinhoPro é uma aplicação Laravel que oferece um sistema de gerenciamento de usuários, permissões, categorias e produtos.
+Guia de Utilização da Aplicação
+
+Introdução
+
+Este guia tem como objetivo fornecer instruções claras sobre como utilizar a aplicação criada com Laravel e MySQL. Leia atentamente para aproveitar ao máximo os recursos disponíveis.
 
 Requisitos
-PHP 7.4 ou superior
-Laravel 8.x
-MySQL
-Instalação
-Clone o repositório para o seu ambiente local.
-Configure o arquivo .env com as informações do seu banco de dados.
-Execute composer install para instalar as dependências do Laravel.
-Execute php artisan key:generate para gerar uma nova chave de aplicativo.
-Execute php artisan migrate para criar as tabelas no banco de dados.
-Execute php artisan db:seed para popular o banco de dados com dados iniciais.
-Uso
-Acesse a aplicação através do seu navegador.
-Faça login com as credenciais de administrador.
-Você poderá gerenciar usuários, permissões, categorias e produtos.
-Contribuindo
-Sinta-se à vontade para contribuir com melhorias, novas funcionalidades ou correções de bugs. Abra um pull request e teremos prazer em analisá-lo.
 
-Licença
-Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+Antes de começar, certifique-se de ter instalado:
+
+PHP 
+Composer
+MySQL 
+Git
+
+Instalação
+
+Clone o repositório do projeto:
+git clone https://github.com/seu-usuario/nome-do-projeto.git
+Instale as dependências com o Composer:
+composer install
+Crie um banco de dados MySQL e configure as credenciais no arquivo .env.
+
+Execute as migrações para criar as tabelas no banco de dados:
+
+php artisan migrate
+Configuração
+Abra o arquivo .env e preencha as variáveis de ambiente com as informações do seu ambiente.
+
+env
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nome_do_banco
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+
+Utilização
+Sistema de Login
+Acesse a aplicação pelo navegador.
+
+Clique em "Login".
+
+Insira suas credenciais e clique em "Entrar".
+(admin@exemple.com senha admin123
+vendedor@exemple.com senha vendedor123
+cliente1@exemple.com senha cliente1123)
+
+Gerenciamento de Usuários
+Após o login, vá para a seção "Administração".
+
+Clique em "Gerenciar Usuários".
+
+Aqui, você pode adicionar, editar ou excluir usuários.
+
+Gerenciamento de Permissões
+Na seção "Administração", clique em "Gerenciar Permissões".
+
+Adicione ou remova permissões para os usuários.
+
+Gerenciamento de Categorias e Produtos
+Na seção "Administração", escolha "Gerenciar Categorias" ou "Gerenciar Produtos".
+
+Adicione, edite ou exclua categorias e produtos conforme necessário.
+
