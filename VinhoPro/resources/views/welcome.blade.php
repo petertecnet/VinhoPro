@@ -114,13 +114,14 @@
             </div>
         </div>
     </div>
-
+@auth
     <div class="row mt-5">
         <div class="col-md-10 text-center">
             <p class="lead">Junte-se à VinhoPro hoje e comece a desfrutar de uma nova maneira de apreciar e gerenciar seus vinhos.</p>
             <a href="{{ route('register') }}" class="btn btn-primary btn-lg">Registrar Agora</a>
         </div>
     </div>
+    @endauth
 </div>
 @endsection
 <style>

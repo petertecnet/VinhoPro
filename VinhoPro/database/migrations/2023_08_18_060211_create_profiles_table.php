@@ -31,7 +31,7 @@ class CreateProfilesTable extends Migration
             ],
             [
                 'name' => 'Cliente',
-                'permissions' => json_encode(['category_view', 'product_view']),
+                'permissions' => json_encode([]),
             ],
         ];
 

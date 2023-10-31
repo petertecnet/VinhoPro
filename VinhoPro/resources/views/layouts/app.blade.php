@@ -40,39 +40,42 @@
         <a class="nav-link" href="{{ route('home.products') }}"> Produtos</a>
     </li>
             </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @auth    <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-info" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                         
-  @if(auth()->user()->profile->name == 'Administrador') Administração @endif 
-                                </a>
+                        @auth
+    @if(Auth::user()->profile->id == 1 || Auth::user()->profile->id == 2) 
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle text-info" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                Administração
+            </a>
 
-                                <ul class="dropdown-menu">
-                                <li class="nav-item">
-        @if(auth()->user()->hasPermission('user_view'))
-            <a class="nav-link" href="{{ route('user.index') }}">Gerenciar Usuários</a>
-        @endif
-    </li>
-    <li class="nav-item">
-        @if(auth()->user()->hasPermission('profile_view'))
-            <a class="nav-link" href="{{ route('profile.index') }}">Gerenciar perfis</a>
-        @endif
-    </li>
-    <li class="nav-item">
-        @if(auth()->user()->hasPermission('category_view'))
-            <a class="nav-link" href="{{ route('category.index') }}">Gerenciar Categorias</a>
-        @endif
-    </li>
-    <li class="nav-item">
-        @if(auth()->user()->hasPermission('product_view'))
-            <a class="nav-link" href="{{ route('product.index') }}">Gerenciar Produtos</a>
-        @endif
-    </li>
-</ul>
-                            </li>@endauth
+            <ul class="dropdown-menu">
+                <li class="nav-item">
+                    @if(auth()->user()->hasPermission('user_view'))
+                        <a class="nav-link" href="{{ route('user.index') }}">Gerenciar Usuários</a>
+                    @endif
+                </li>
+                <li class="nav-item">
+                    @if(auth()->user()->hasPermission('profile_view'))
+                        <a class="nav-link" href="{{ route('profile.index') }}">Gerenciar perfis</a>
+                    @endif
+                </li>
+                <li class="nav-item">
+                    @if(auth()->user()->hasPermission('category_view'))
+                        <a class="nav-link" href="{{ route('category.index') }}">Gerenciar Categorias</a>
+                    @endif
+                </li>
+                <li class="nav-item">
+                    @if(auth()->user()->hasPermission('product_view'))
+                        <a class="nav-link" href="{{ route('product.index') }}">Gerenciar Produtos</a>
+                    @endif
+                </li>
+            </ul>
+        </li>
+    @endif
+@endauth
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
